@@ -3,7 +3,7 @@
 
 services:
   nginx:
-    image: nginx:latest
+    image: raulaxxo/nginx-links
     ports:
       - "80:80"
     deploy:
@@ -11,8 +11,8 @@ services:
       replicas: 3
       placement:
         constraints: [node.role == worker]
-    volumes:
-      - ./html:/usr/share/nginx/html:ro
+    #volumes:
+     # - ./html:/usr/share/nginx/html:ro
     networks:
       - nginx_net
 
