@@ -1,0 +1,21 @@
+
+#version: "3.8"
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    deploy:
+      mode: replicated
+      replicas: 3
+      placement:
+        constraints: [node.role == worker]
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - nginx_net
+
+networks:
+  nginx_net:
+    driver: overlay
